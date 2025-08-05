@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #222;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 450px;
+      margin: 100px auto 0;
+      background: linear-gradient(135deg, #00feba, #5b548a);
+      color: white;
+      padding: 40px 35px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .search-box {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box input {
+      height: 60px;
+      padding: 10px 20px;
+      outline: none;
+      border: none;
+      border-radius: 30px;
+      color: #555;
+      background-color: #ebfffc;
+      width: 100%;
+      font-size: 18px;
+      margin-right: 15px;
+      flex: 1;
+    }
+    .search-box button {
+      height: 60px;
+      width: 60px;
+      outline: none;
+      border: none;
+      border-radius: 50%;
+      background-color: #ebfffc;
+    }
+
+    .search-box button img {
+      width: 20px;
+    }
+
+    .weather img {
+      width: 130px;
+      margin-top: 30px;
+    }
+
+    .weather h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-top: 5px;
+    }
+
+    .weather .city {
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
+
+    .weather .details {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      align-items: center;
+      padding: 0 20px;
+      margin-top: 50px;
+    }
+
+    .col {
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+    .col img {
+      width: 40px;
+      margin-right: 10px;
+      position: relative;
+      top: -12px;
+    }
+
+    .wind-speed,
+    .humidity {
+      font-size: 1.2rem;
+      text-align: center;
+      font-weight: 500;
+    }
+  </style>
+  <body>
+    <div class="card">
+      <div class="search-box">
+        <input type="text" placeholder="Enter city name" spellcheck="false" />
+        <button><img src="search.png" /></button>
+      </div>
+
+      <div class="weather">
+        <img src="clouds.png" alt="" class="weather-image" />
+        <h1 class="temp">22°C</h1>
+        <div class="city">New York</div>
+
+        <div class="details">
+          <div class="col">
+            <img src="wind.png" alt="" />
+            <div class="wind">
+              <p class="wind-speed">Wind Speed</p>
+              <p>15 km/hr</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="humidity.png" alt="" />
+            <div class="humidity-speed">
+              <p class="humidity">Humidity</p>
+              <p>50%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const apiKey = "ec341f6e87a9305023ae2fd4f7d04967";
+    const apiUrl ="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=bangalore";
+
+    async function checkWeather(){
+        const response =await fetch(apiUrl + `&appid=${apikey}`);
+        let data=await response.json();
+        console.log(data)
+    }
+
+    checkWeather();
+  </script>
+</html>
